@@ -1,0 +1,19 @@
+Created    : Sat Feb 15 12:08:05 EET 2020
+File       : NOTES.txt
+a92ff9342e7da38a0ecc93074e76570ffde4510b8d20486fcb7ded35d310dd4b
+-----------------------------------------------------------------------
+Start-date : Sat Feb 15 12:08:05 EET 2020 (1581761285)
+End-date   : Sat Feb 15 12:09:47 EET 2020 (1581761387)
+Report-time: 1m 42s
+
+> Version of notes prepared to go to github.
+> 
+> This version of notes has been prepared to account for the time
+> spent while reporting and so, be able to include it in the final
+> reported time.
+> 
+> The author has refactored this file to reflect the time spent in
+> reportin once he was forced to do hourly reporting on a project.
+9b2224cf8f5ff2ba74da261351ecaca83d48122c5eac6941628ed7b557362baa
+-----------------------------------------------------------------------
+034d5a7528e865e71a71d54f6aeb96eecd575a7b2beca4a8c1b6c3e2dc9b897b

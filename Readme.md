@@ -38,4 +38,4 @@ pattern, where pattern is `/^[0-9a-f]\{64\}/`) so something like:
 :map ^V<F4> :?^Start-date :?,/^[0-9a-f]\{64\}$/-1!sha256^V^M
 ```
 
-(where ^V is Ctrl-V and <F4> is the F4 key, and ^M is Ctrl-M)
+(where ^V is Ctrl-V and \<F4\> is the F4 key, and ^M is Ctrl-M)

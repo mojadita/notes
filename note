@@ -48,34 +48,34 @@ DURATION_STR="${DURATION}s"
 
 if [ "${DURATION}" -ge 60 ]
 then
-	DURATION_SEC=`expr ${DURATION} % 60`
-	DURATION=`expr ${DURATION} / 60`
-	DURATION_STR="${DURATION}m ${DURATION_SEC}s"
-	if [ "${DURATION}" -ge 60 ]
-	then
-		DURATION_MIN=`expr ${DURATION} % 60`
-		DURATION=`expr ${DURATION} / 60`
-		DURATION_STR="${DURATION}h ${DURATION_STR}"
-		if [ "${DURATION}" -ge 24 ]
-		then
-			DURATION_HR=`expr ${DURATION} % 24`
-			DURATION=`expr ${DURATION} / 24`
-			DURATION_STR="${DURATION}d ${DURATION_STR}"
-		fi
-	fi
+    DURATION_SEC=`expr ${DURATION} % 60`
+    DURATION=`expr ${DURATION} / 60`
+    DURATION_STR="${DURATION}m ${DURATION_SEC}s"
+    if [ "${DURATION}" -ge 60 ]
+    then
+        DURATION_MIN=`expr ${DURATION} % 60`
+        DURATION=`expr ${DURATION} / 60`
+        DURATION_STR="${DURATION}h ${DURATION_STR}"
+        if [ "${DURATION}" -ge 24 ]
+        then
+            DURATION_HR=`expr ${DURATION} % 24`
+            DURATION=`expr ${DURATION} / 24`
+            DURATION_STR="${DURATION}d ${DURATION_STR}"
+        fi
+    fi
 fi
 
 # eliminate comment lines.
 sed '/^[ \t]*#/d;s/^/> /' "${tmp1}" > "${tmp2}"
 if [ "0" -eq "`sed '/^> [ \t]*$/d' "${tmp2}" | wc -l`" ]
 then
-	# empty file
-	echo "START_TS=${START_TS}" >&2
-	echo "DATE=${DATE}" >&2
-	echo "END_TS=${END_TS}" >&2
-	echo "END_DATE=${END_DATE}" >&2
-	echo "DURATION=${DURATION}" >&2
-	echo "DURATION_STR=${DURATION_STR}" >&2
+    # empty file
+    echo "START_TS=${START_TS}" >&2
+    echo "DATE=${DATE}" >&2
+    echo "END_TS=${END_TS}" >&2
+    echo "END_DATE=${END_DATE}" >&2
+    echo "DURATION=${DURATION}" >&2
+    echo "DURATION_STR=${DURATION_STR}" >&2
     echo "Aborting due to empty file" >&2
     exit 1
 fi
@@ -83,12 +83,12 @@ fi
 # initialization of ${file} if not existent.
 if [ \! -f "${file}" ]
 then
-	cat <<EOF >"${file}"
+    cat <<EOF >"${file}"
 Created    : ${DATE}
 File       : ${file}
 EOF
-	sha256 <"${file}" >>"${file}"
-	echo "${SEP_LINE}" >>"${file}"
+    sha256 <"${file}" >>"${file}"
+    echo "${SEP_LINE}" >>"${file}"
 fi
 
 cat <<EOF - "${tmp2}" >"${tmp3}"

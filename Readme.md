@@ -1,7 +1,7 @@
 # NOTES:  a simple notes script.
 
 The script notes allows a user to write a small note, and
-maintain a text file (NOTES.txt) of these notes, in a format that
+maintain a text file (`NOTES.txt`) of these notes, in a format that
 is easily read automatically or by a human.
 
 The file adds a header to the note made by the user, accounting
@@ -18,25 +18,24 @@ the checksum.  The individual notes (just before a separator
 line) cover the lines from the previous file checksum upto the
 line before the checksum to be tested.
 
-If you select those lines and execute the following command in
-vi(1):
+You can execute the following command in `vi(1)` to check the
+whole file:
 
 ```
-:1,-1!sha256
+:1,$-1!sha256
 ```
 
-you'll get all the selected lines by theyr checksum, so you
+you'll exchange all the selected lines by theyr checksum, so you
 should get two checksum equal lines on your screen.  To undo,
 just press `u` and the operation will be undone.
 
-An easi way to check this in vi is to create a map to one key,
-and search the previous line containing the pattern `^Start-date:`,
+An easy way to check this in `vi(1)` is to create a map to one key,
+and search the previous line containing the pattern `^Start-date :`,
 and the following line containing a checksum (previous line to
-pattern, where pattern is `^[0-9a-f]\{64\}`) so something like:
+pattern, where pattern is `/^[0-9a-f]\{64\}/`) so something like:
 
 ```
-:map ^V<F4> :?^Start-date:?,/^[0-9a-f]\{64\}$/-1!sha256^M
+:map ^V<F4> :?^Start-date :?,/^[0-9a-f]\{64\}$/-1!sha256^V^M
 ```
 
-(where ^V is Ctrl-V and <F4> is the F4 key, and ^M is Ctrl-M --
-you must press ^V^M to introduce this key)
+(where ^V is Ctrl-V and <F4> is the F4 key, and ^M is Ctrl-M)

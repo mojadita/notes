@@ -1,6 +1,8 @@
 #!/bin/sh
-# Author: Luis Colorado <luiscoloradourcola@gmail.com>
-# Date  : mié sep  9 15:08:40 EEST 2015
+# Author   : Luis Colorado <luiscoloradourcola@gmail.com>
+# Date     : mié sep  9 15:08:40 EEST 2015
+# Copyright: (C) 2019--2020 LUIS COLORADO.  All rights reserved.
+# License  : BSD v2
 
 file="NOTES.txt"
 default_editor=vi

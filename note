@@ -8,6 +8,7 @@ file="NOTES.txt"
 default_editor=vi
 START_TS=`date +%s`
 DATE=`LANG=C date -r ${START_TS}`
+SHA256='sha256'
 
 tmp0="`mktemp`"
 tmp1="`mktemp`"
@@ -89,7 +90,7 @@ then
 Created    : ${DATE}
 File       : ${file}
 EOF
-    sha256 <"${file}" >>"${file}"
+    "${SHA256}" <"${file}" >>"${file}"
     echo "${SEP_LINE}" >>"${file}"
 fi
 
@@ -100,10 +101,10 @@ Report-time: ${DURATION_STR}
 
 EOF
 
-sha256 <"${tmp3}" >>"${tmp3}"
+"${SHA256}" <"${tmp3}" >>"${tmp3}"
 
 cat "${tmp3}" - <<EOF >>"${file}"
 ${SEP_LINE}
 EOF
 
-sha256 <"${file}" >>"${file}"
+"${SHA256}" <"${file}" >>"${file}"

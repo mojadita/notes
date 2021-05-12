@@ -17,3 +17,11 @@ Report-time: 1m 42s
 9b2224cf8f5ff2ba74da261351ecaca83d48122c5eac6941628ed7b557362baa
 -----------------------------------------------------------------------
 034d5a7528e865e71a71d54f6aeb96eecd575a7b2beca4a8c1b6c3e2dc9b897b
+Directory  : notes
+Start-date : Wed May 12 21:45:25 EEST 2021 (1620845125)
+End-date   : Wed May 12 21:45:56 EEST 2021 (1620845156)
+Report-time: 31s
+
+> This is another note to check how the appending of the several
+> notes work.
+-----------------------------------------------------------------------

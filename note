@@ -8,6 +8,7 @@ file="NOTES.txt"
 default_editor=vi
 START_TS=`date +%s`
 DATE=`LANG=C date -r ${START_TS}`
+DIRECTORY=$(basename $(pwd))
 
 tmp0="`mktemp`"
 tmp1="`mktemp`"
@@ -21,6 +22,7 @@ trap 'rm -f "${tmp0}" "${tmp1}" "${tmp2}" "${tmp3}"' EXIT
 cat <<EOF >${tmp1}
 # ..,....;....,....;....,....;....,....;....,....;....,...;....,....;
 #       10        20        30        40        50       60        70
+# Directory: $DIRECTORY
 # Date: ${DATE} (${START_TS})
 # This file is to be edited for a note to be included in
 # the file ${file} in the current directory.  If not
@@ -72,6 +74,7 @@ sed '/^[ \t]*#/d;s/^/> /' "${tmp1}" > "${tmp2}"
 if [ "0" -eq "`sed '/^> [ \t]*$/d' "${tmp2}" | wc -l`" ]
 then
     # empty file
+	echo "DIRECTORY=${DIRECTORY}" >&2
     echo "START_TS=${START_TS}" >&2
     echo "DATE=${DATE}" >&2
     echo "END_TS=${END_TS}" >&2
@@ -89,21 +92,22 @@ then
 Created    : ${DATE}
 File       : ${file}
 EOF
-    sha256 <"${file}" >>"${file}"
+    # sha256 <"${file}" >>"${file}"
     echo "${SEP_LINE}" >>"${file}"
 fi
 
 cat <<EOF - "${tmp2}" >"${tmp3}"
+Directory  : ${DIRECTORY}
 Start-date : ${DATE} (${START_TS})
 End-date   : ${END_DATE} (${END_TS})
 Report-time: ${DURATION_STR}
 
 EOF
 
-sha256 <"${tmp3}" >>"${tmp3}"
+# sha256 <"${tmp3}" >>"${tmp3}"
 
 cat "${tmp3}" - <<EOF >>"${file}"
 ${SEP_LINE}
 EOF
 
-sha256 <"${file}" >>"${file}"
+# sha256 <"${file}" >>"${file}"

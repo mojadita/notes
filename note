@@ -39,7 +39,7 @@ cat <<EOF >${tmp1}
 # ..,....;....,....;....,....;....,....;....,....;....,...;....,....;
 EOF
 
-if [ -x $(which "${EDITOR}") ]
+if [ "${EDITOR}" ] && [ -x "${EDITOR}" ]
 then
     "${EDITOR}" "${tmp1}"
 else

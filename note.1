@@ -1,0 +1,76 @@
+.Dd $Mdocdate$
+.Dt NOTE 1
+.Os
+.Sh NAME
+.Nm note
+.Nd write a note an add it to NOTES.txt file
+.Sh SYNOPSIS
+.Nm note
+.Sh DESCRIPTION
+The
+.Nm
+utility opens an editor to make a note and adds it to file
+.Cm NOTES.txt
+in your current directory, in an appropiate format to maintain
+all notes sorted by time added, and with appropiate timestamps to
+make a log registry of them.
+.Pp
+The file
+.Cm NOTES.txt
+is searched in your current directory, which makes it appropiate
+to note events that are project specific.
+.Pp
+The use of
+.Nm
+is simple.  You have just to write
+.Nm
+at your terminal and the script does the rest.  It calls your
+favourite editor (it checks your
+.Cm EDITOR
+environment variable, if exists) and provides instructions and a
+pair of rulers to serve as an indication of the text columns you
+are working on.
+.Pp
+After editing the file, timestamps of the start and end of the
+edit session are added, and the total edition duration are
+prepended to the note and added to the file.  The note contents
+is included (with each line prepended with the string
+.Cm "\(lq> \(rq"
+and the help lines are taken off from the file (all lines
+beginning with the character
+.Cm #
+are filtered off.
+.Pp
+Beware, that instructions are in the edited file at the beginning
+of the editing session, so if you are using a line editor (like
+.Xr ed 1
+or
+.Xr ex 1 ,
+then the file contents will not be visible until you print them.
+.Pp
+If, after editing a new note, you end with an empty note (the
+file is empty after deleting the comment lines) then the editing
+session is aborted and no note is added to the file.
+.Pp
+A timestamp with the date and time the file
+.Cm NOTES.txt
+was created is also added to the beginning of the file, when the
+file is first created.
+.Sh ENVIRONMENT
+The variable
+.Cm EDITOR
+is used to determine which editor is being used.
+In case this variable is not used, it defaults to
+.Xr vi 1 .
+.Sh FILES
+The file
+.Cm NOTES.txt
+is searched for the notes and created if not existent, in the
+current working directory.
+.Sh EXIT STATUS
+The
+.Nm
+utility returns 0 in case of a good note being added, or 1 in
+case of error.
+.\" .Sh AUTHORS
+Luis Colorado.
